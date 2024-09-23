@@ -42,10 +42,14 @@ def spend_points(request: SpendPointsRequest):
         payer = transaction.payer
         #because of the changes illustrated by the comment below, we want to skip over payers with a 0 balance.
         if not balances[payer]: continue
-        #in the event that spend is ran multiple times, it will cause it to exceed payer's balance when we want to spend the remaining points available in balance.
-        #taking the minimum of the three is a clever way to handle this corner case because if our balance is less than the initial transaction, it will fully exhaust the balance
-        #this also works when the net balance is less than one of the transactions for that payer, since the negative that resulted in this deficit will add points to the remaining points if it is before the positive value.
-        #the converse, where a negative is after the positive value, also is handled since if the positive value transaction fully exhausts the remaining points, the loop will break on the next iteration.
+        #in the event that spend is ran multiple times, it will cause it to exceed payer's balance when we want to spend the remaining points \
+        #available in balance.
+        #taking the minimum of the three is a clever way to handle this corner case because if our balance is less than the initial transaction, \
+        #it will fully exhaust the balance.
+        #this also works when the net balance is less than one of the transactions for that payer, since the negative that resulted in this \
+        #deficit will add points to the remaining points if it is before the positive value.
+        #the converse, where a negative is after the positive value, also is handled since if the positive value transaction fully exhausts \
+        #the remaining points, the loop will continue and skip over the points that may be added from the negative.
         spendable_points = min(rem_points, transaction.points, balances[payer]) 
         if rem_points > 0 and balances[payer] >= spendable_points:
             balances[payer] -= spendable_points
