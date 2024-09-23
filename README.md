@@ -10,11 +10,11 @@ This **FastAPI** application provides a **REST API** to manage user points and t
 1. **Clone the Repository**
 ```bash
 git clone https://github.com/raymondwusuper/fetch-backend-assessment
-cd pathname/to/your/downloaded/fetch-backend-assessment
+cd pathname/to/your/downloaded/fetch
 ```
 2. **Create a Virtual Environment (optional but recommended):**
 ```bash
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate  # For macOS/Linux
 # For Windows
 venv\Scripts\activate
@@ -25,7 +25,7 @@ pip3 install fastapi uvicorn #Python 3
 ```
 4. **Run the Application:** Make sure you are in the project directory (refer to step 1 for cd command). Run the server using:
 ```bash
-uvicorn fetch_backend_test:app --reload
+python3 -m uvicorn main:app --reload
 ```
 5. **Access the API:** Open your browser and navigate to:
 ```
