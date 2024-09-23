@@ -29,7 +29,7 @@ uvicorn fetch_backend_test:app --reload
 ```
 5. **Access the API:** Open your browser and navigate to:
 ```
-http://127.0.0.1:8000
+http://127.0.0.1:8000/docs
 ```
 This will display the UI, where you can interact with the API endpoints.
 
