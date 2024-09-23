@@ -8,12 +8,12 @@ Uvicorn was selected as the ASGI server due to its speed and ability to handle a
 2. What are the advantages and disadvantages of your solution?
 
 Advantages:
-- **Simplicity and Readability**: FastAPI and Python are easy to write and understand, making it easier to maintain and extend the code.
-- **Automatic Validation**: Pydantic automatically handles request data validation and type enforcement, reducing boilerplate code and preventing potential bugs.
-- **OpenAPI Documentation**: FastAPI automatically generates interactive API documentation, which is helpful for development and testing.
+- Simplicity and Readability: FastAPI and Python are easy to write and understand, making it easier to maintain and extend the code.
+- Automatic Validation: Pydantic automatically handles request data validation and type enforcement, reducing boilerplate code and preventing potential bugs.
+- OpenAPI Documentation: FastAPI automatically generates interactive API documentation, which is helpful for development and testing.
 
 Disadvantages:
-- **Scalability**: Although FastAPI is performant, Python's single-threaded nature may limit scalability compared to multi-threaded environments like Node.js or Java for CPU-bound tasks.
+- Scalability: Although FastAPI is performant, Python's single-threaded nature may limit scalability compared to multi-threaded environments like Node.js or Java for CPU-bound tasks.
 
 3. What has been a favorite school/personal project thus far? What about it that challenged you?
 
