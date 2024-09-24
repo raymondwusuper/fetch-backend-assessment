@@ -22,6 +22,7 @@ def add_points(transaction: AddPointsRequest):
     transactions.append(transaction)
     balances[transaction.payer] += transaction.points
     if balances[transaction.payer] < 0: 
+        balances[transaction.payer] -= transaction.points
         raise HTTPException(status_code=400, detail="Negative balance not allowed for any payer.")
     return {"status": "Points added successfully"}
 
