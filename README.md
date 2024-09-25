@@ -109,19 +109,19 @@ curl -X GET "http://127.0.0.1:8000/balance"
   - This edge case is handled by adding an extra parameter, the balance of the payer, to the min call, since it allows the amount of money being taken to never exceed the balance of the payer.
   - The mathematical explanation and proof as to why exactly this works is in the comments on line 47.
   - Example case:
-- **/add:**
+- **/add:** Each call should be made separately
 ```json
-● { "payer": "DANNON", "points": 300, "timestamp": "2022-10-31T10:00:00Z" }
-● { "payer": "UNILEVER", "points": 200, "timestamp": "2022-10-31T11:00:00Z" }
-● { "payer": "DANNON", "points": -200, "timestamp": "2022-10-31T15:00:00Z" }
-● { "payer": "MILLER COORS", "points": 10000, "timestamp": "2022-11-01T14:00:00Z" }
-● { "payer": "DANNON", "points": 1000, "timestamp": "2022-11-02T14:00:00Z" }
+{ "payer": "DANNON", "points": 300, "timestamp": "2022-10-31T10:00:00Z" }
+{ "payer": "UNILEVER", "points": 200, "timestamp": "2022-10-31T11:00:00Z" }
+{ "payer": "DANNON", "points": -200, "timestamp": "2022-10-31T15:00:00Z" }
+{ "payer": "MILLER COORS", "points": 10000, "timestamp": "2022-11-01T14:00:00Z" }
+{ "payer": "DANNON", "points": 1000, "timestamp": "2022-11-02T14:00:00Z" }
 ```
-- **/spend:**
+- **/spend:** Each call should be made separately
 ```json
-● { "points": 5000 }
-● { "points": 5000 }
-● { "points": 1300 }
+{ "points": 5000 }
+{ "points": 5000 }
+{ "points": 1300 }
 ```
 - **/balance:**
    - Final output should be { "DANNON": 0, "UNILEVER": 0, "MILLER COORS:" 0 }
