@@ -2,6 +2,8 @@
 
 I chose Python as the programming language because it has robust libraries for building APIs and is known for simplicity and readability. 
 For the web framework, I used FastAPI because it provides an intuitive way to create APIs, has excellent performance (comparable to Node.js and Go), and natively supports asynchronous request handling, which improves scalability. 
+Furthermore, among other popular Python modules like Flask or DJango DRF, FastAPI is much simpler and lightweight compared to DJango, and also provides a lot more functionalities compared to Flask. Most
+notably, FastAPI is both asynchronous by default and autogenerates OpenAPI and Swagger UI, which allows for easy and legible testing. It is far more scalable for smaller-scale API projects like the one requested by Fetch as a backend assessment.
 Additionally, FastAPI is well-integrated with Pydantic for data validation and automatic generation of OpenAPI documentation. 
 Uvicorn was selected as the ASGI server due to its speed and ability to handle asynchronous IO operations efficiently.
 
