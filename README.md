@@ -128,10 +128,10 @@ curl -X GET "http://127.0.0.1:8000/balance"
    - Note that without the extra balance of payer parameter, Miller Coors' balance will not become 0.
 - **Negative Balance:** In the event of a transaction that brings a payer's balance to the negatives, it raises an error and reverts the transaction such that the balance returns to its original balance before the negative transaction.
   - Example case:
-- **/add:**
+- **/add:** Each call should be made separately
 ```json
-● { "payer": "DANNON", "points": 200, "timestamp": "2022-10-31T10:00:00Z" }
-● { "payer": "DANNON", "points": -300, "timestamp": "2022-10-31T15:00:00Z" }
+{ "payer": "DANNON", "points": 200, "timestamp": "2022-10-31T10:00:00Z" }
+{ "payer": "DANNON", "points": -300, "timestamp": "2022-10-31T15:00:00Z" }
 ```
 - **/balance:**
   - Should return { "DANNON": 200 }
