@@ -41,7 +41,7 @@ def spend_points(request: SpendPointsRequest):
         if rem_points <= 0: break
         payer = transaction.payer
         #because of the changes illustrated by the comment below, we want to skip over payers with a 0 balance.
-        if not balances[payer]: continue
+        if balances[payer] <= 0: continue
         '''
         In the event that spend is ran multiple times, it will cause it to exceed payer's balance when we want to spend the remaining points \
         available in balance.
