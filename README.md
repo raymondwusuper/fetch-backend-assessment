@@ -102,5 +102,13 @@ curl -X GET "http://127.0.0.1:8000/balance"
 - `main.py`: Contains the main FastAPI application code with the API endpoints.
 - `summary.txt`: Contains the information detailing the choice of tools, libraries, advantages/disadvantages, and favorite school/personal project.
 
+## Possible Edge Cases
+- **Multiple calls to /spend:** In the event of multiple spend calls, this may result in many things:
+  1. Not spending points from a payer because the remaining points from the spend call is exceeded by the initial transaction
+  2. Possible future transactions being limited by the remaining balance from one or more spend calls
+  - This edge case is handled by adding an extra parameter, the balance of the payer, to the min call, since it allows the amount of money being taken to never exceed the balance of the payer.
+  - The mathematical explanation and proof as to why exactly this works is in the comments on line 47.
+- **Negative Balance:** In the event of a transaction that brings a payer's balance to the negatives, it raises an error and reverts the transaction such that the balance returns to its original balance before the negative transaction.
+
 ## Conclusion
 This documentation provides a guide to install and run the Fetch Backend API assessment. Follow these steps carefully, and reach out for any questions or issues.
