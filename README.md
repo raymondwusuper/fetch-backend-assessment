@@ -101,7 +101,6 @@ curl -X GET "http://127.0.0.1:8000/balance"
 ## Code Structure
 - `main.py`: Contains the main FastAPI application code with the API endpoints.
 - `summary.txt`: Contains the information detailing the choice of tools, libraries, advantages/disadvantages, and favorite school/personal project.
-- `requirements.txt`: Lists the dependencies required to run the REST API.
 
 ## Conclusion
 This documentation provides a guide to install and run the Fetch Backend API assessment. Follow these steps carefully, and reach out for any questions or issues.
