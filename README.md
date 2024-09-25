@@ -67,11 +67,11 @@ curl -X GET "http://127.0.0.1:8000/balance"
    - **Route:** `/add`
    - **Method:** `POST`
    - **Request Body:**
-   - ```json
-      {
-        "payer": "DANNON", "points": 300, "timestamp": "2022-10-31T10:00:00Z"
-      }
-     ```
+      - ```json
+         {
+           "payer": "DANNON", "points": 300, "timestamp": "2022-10-31T10:00:00Z"
+         }
+        ```
    - **Response:**
       - `200 OK` in terminal if successful.
       - `400 Bad Request` if point request results in negative balance.
@@ -79,25 +79,25 @@ curl -X GET "http://127.0.0.1:8000/balance"
    - **Route:** `/spend`
    - **Method:** `POST`
    - **Request Body:**
-   - ```json
-      {
-        "points": 5000
-      }
-     ```
+      - ```json
+         {
+           "points": 5000
+         }
+        ```
    - **Response:**
-     - `200 OK` with details of points allocation.
-     - `400 Bad Request` if not enough points are available.
+      - `200 OK` with details of points allocation.
+      - `400 Bad Request` if not enough points are available.
 3. **Get Points Balance**
    - **Route:** `/balance`
    - **Method:** `GET`
    - **Response:**
-   - ```json
-      {
-        "DANNON": 1000,
-        "UNILEVER": 0,
-        "MILLER COORS": 5300
-      }
-     ```
+      - ```json
+         {
+           "DANNON": 1000,
+           "UNILEVER": 0,
+           "MILLER COORS": 5300
+         }
+        ```
 ## Code Structure
 - `main.py`: Contains the main FastAPI application code with the API endpoints.
 - `summary.txt`: Contains the information detailing the choice of tools, libraries, advantages/disadvantages, and favorite school/personal project.
