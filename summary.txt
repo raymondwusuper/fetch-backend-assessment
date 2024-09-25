@@ -12,6 +12,7 @@ Advantages:
 - Automatic Validation: Pydantic automatically handles request data validation and type enforcement, reducing boilerplate code and preventing potential bugs.
 - OpenAPI Documentation: FastAPI automatically generates interactive API documentation, which is helpful for development and testing.
 - Having sorted in spend can lay the foundation for future improvements
+- Handles many edge cases, most notably multiple calls to spend.
 
 Disadvantages:
 - Scalability: Although FastAPI is performant, Python's single-threaded nature may limit scalability compared to multi-threaded environments like Node.js or Java for CPU-bound tasks.
