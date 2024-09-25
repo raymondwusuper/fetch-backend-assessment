@@ -108,7 +108,34 @@ curl -X GET "http://127.0.0.1:8000/balance"
   2. Possible future transactions being limited by the remaining balance from one or more spend calls
   - This edge case is handled by adding an extra parameter, the balance of the payer, to the min call, since it allows the amount of money being taken to never exceed the balance of the payer.
   - The mathematical explanation and proof as to why exactly this works is in the comments on line 47.
+  - Example case:
+- **/add:**
+```json
+● { "payer": "DANNON", "points": 300, "timestamp": "2022-10-31T10:00:00Z" }
+● { "payer": "UNILEVER", "points": 200, "timestamp": "2022-10-31T11:00:00Z" }
+● { "payer": "DANNON", "points": -200, "timestamp": "2022-10-31T15:00:00Z" }
+● { "payer": "MILLER COORS", "points": 10000, "timestamp": "2022-11-01T14:00:00Z" }
+● { "payer": "DANNON", "points": 1000, "timestamp": "2022-11-02T14:00:00Z" }
+```
+- **/spend:**
+```json
+● { "points": 5000 }
+● { "points": 5000 }
+● { "points": 1300 }
+```
+- **/balance:**
+   - Final output should be { "DANNON": 0, "UNILEVER": 0, "MILLER COORS:" 0 }
+   - Note that without the extra balance of payer parameter, Miller Coors' balance will not become 0.
 - **Negative Balance:** In the event of a transaction that brings a payer's balance to the negatives, it raises an error and reverts the transaction such that the balance returns to its original balance before the negative transaction.
+  - Example case:
+- **/add:**
+```json
+● { "payer": "DANNON", "points": 200, "timestamp": "2022-10-31T10:00:00Z" }
+● { "payer": "DANNON", "points": -300, "timestamp": "2022-10-31T15:00:00Z" }
+```
+- **/balance:**
+  - Should return { "DANNON": 200 }
+  - Note that the second transaction did not go through because it would result in Dannon's balance being negative.
 
 ## Conclusion
 This documentation provides a guide to install and run the Fetch Backend API assessment. Follow these steps carefully, and reach out for any questions or issues.
