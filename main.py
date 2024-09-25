@@ -19,7 +19,7 @@ class SpendPointsResponse(BaseModel):
 
 @app.post("/add")
 def add_points(transaction: AddPointsRequest):
-    if transaction.points < 0 and -transaction.points > balances[transaction.payer]:
+    if transaction.points < 0 and -transaction.points > balances[transaction.payer]: #in the event of negative balances
         raise HTTPException(status_code=400, detail="Negative balance not allowed for any payer.")
     transactions.append(transaction)
     balances[transaction.payer] += transaction.points
